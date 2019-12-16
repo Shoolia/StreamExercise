@@ -19,7 +19,7 @@ public class Main {
 
         double minElement = IntStream.of(array).min().orElse(0);
 
-        int minElementIndex = IntStream.range(0,array.length)
+        int indexOfMinElement = IntStream.range(0,array.length)
                 .reduce((i,j) -> array[i] > array[j] ? j : i)
                 .orElse(0);
 
@@ -29,8 +29,19 @@ public class Main {
         long countElementsMoreThanZero = IntStream.of(array)
                 .filter(x->x>0).count();
 
+        printText("averageWithoutStream: " + averageWithoutStream);
+        printText("averageWithStream: " + averageWithStream);
+        printText("minElement: " + minElement);
+        printText("indexOfMinElement: " + indexOfMinElement);
+        printText("countZeroElements: " + countZeroElements);
+        printText("countElementsMoreThanZero: " + countElementsMoreThanZero);
+        printText("All elements from massive multiply on 100: ");
+
         IntStream.of(array)
                 .map(x -> x*100).forEach(System.out::println);
 
+    }
+    private static void printText ( String value){
+        System.out.println(value);
     }
 }
